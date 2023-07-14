@@ -10,8 +10,12 @@ public class CharacterCounter {
         scanner.close();
 
 
-        int count = countVietnameseCharacters(input);
-        System.out.println("Output: " + count);
+        if (isValidInput(input)) {
+            int count = countVietnameseCharacters(input);
+            System.out.println("Output: " + count);
+        } else {
+            System.out.println("Chuỗi nhập vào không hợp lệ.");
+        }
     }
 
     public static int countVietnameseCharacters(String input) {
@@ -37,7 +41,6 @@ public class CharacterCounter {
                 i++;
             }
         }
-
         return count;
     }
 
@@ -51,5 +54,8 @@ public class CharacterCounter {
         characterMap.put("ow", "ơ");
         characterMap.put("w", "ư");
         return characterMap;
+    }
+    private static boolean isValidInput(String input) {
+        return input.matches("[a-zA-Z]+");
     }
 }
